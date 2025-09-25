@@ -1877,6 +1877,11 @@ MonoBehaviour:
     target: {fileID: 743927572}
   - key: 9
     target: {fileID: 1982105445}
+  sceneBindings:
+  - key: 282
+    sceneName: TestingGround
+  - key: 283
+    sceneName: Test1
   resetKey: 112
   timerText: {fileID: 418704914}
 --- !u!1 &1814244944

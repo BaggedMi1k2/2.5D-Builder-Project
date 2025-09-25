@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEditor.SearchService;
 
 [System.Serializable]
 public class KeyToggle
