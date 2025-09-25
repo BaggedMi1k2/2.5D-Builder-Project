@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEditor.SearchService;
 
 [System.Serializable]
 public class KeyToggle
@@ -9,9 +10,17 @@ public class KeyToggle
     public GameObject target;  // The object to toggle
 }
 
+[System.Serializable]
+public class KeyScene
+{
+    public KeyCode key;        // The key to press
+    public string sceneName;   // The scene to load (must be in Build Settings)
+}
+
 public class GameManager : MonoBehaviour
 {
     public KeyToggle[] toggles;
+    public KeyScene[] sceneBindings;
     public KeyCode resetKey = KeyCode.P;
 
     public TMP_Text timerText;
@@ -21,13 +30,14 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-
+        // Timer logic
         if (timerRunning)
         {
             timer += Time.deltaTime;
             UpdateTimerDisplay();
         }
 
+        // Toggle objects
         foreach (var toggle in toggles)
         {
             if (Input.GetKeyDown(toggle.key) && toggle.target != null)
@@ -36,10 +46,18 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        foreach (var binding in sceneBindings)
+        {
+            if (Input.GetKeyDown(binding.key) && !string.IsNullOrEmpty(binding.sceneName))
+            {
+                SceneManager.LoadScene(binding.sceneName);
+            }
+        }
+
+        // Restart current scene
         if (Input.GetKeyDown(resetKey))
         {
             RestartGame();
-
         }
     }
 
@@ -57,8 +75,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        Scene currentScene = SceneManager.GetActiveScene();
+        UnityEngine.SceneManagement.Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
     }
-
 }
