@@ -1,22 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GridPlacement : MonoBehaviour
 {
-
+    // placment settings
     public float gridSize = 1f;
+    public int maxPlacements = 5;
+
+    //placable objects
+    public List<GameObject> placeableObjects;
+    private int currentIndex = 0;
     public GameObject thingToPlace;
+
+    //UI
+    public TMP_Text placementText;
+    public TMP_Text selectedObjectText;
+
     private GameObject ghostObject;
     private HashSet<Vector3> occupiedPositions = new HashSet<Vector3>();
+    private int currentPlacements = 0;
 
     private void Start()
     {
-        CreateGhost();
+        if (placeableObjects.Count > 0)
+        {
+            thingToPlace = placeableObjects[currentIndex];
+            CreateGhost();
+            UpdateSelectedObjectText();
+        }
+        UpdatePlacementText();
+
     }
 
     private void Update()
     {
+        HandleObjectSelection();
         UpdateGhostPosition();
 
         if (Input.GetMouseButtonDown(0))
@@ -25,7 +45,22 @@ public class GridPlacement : MonoBehaviour
             DestroyObject();
     }
 
-    // Update is called once per frame
+    void HandleObjectSelection()
+    {
+        // Example: keys 1–9 pick objects from the list
+        for (int i = 0; i < placeableObjects.Count; i++)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1 + i))
+            {
+                currentIndex = i;
+                thingToPlace = placeableObjects[currentIndex];
+                Destroy(ghostObject);
+                CreateGhost();
+                UpdateSelectedObjectText();
+            }
+        }
+    }
+
     void CreateGhost()
     {
         ghostObject = Instantiate(thingToPlace);
@@ -67,7 +102,7 @@ public class GridPlacement : MonoBehaviour
 
             ghostObject.transform.position = snappedPosition;
 
-            if (occupiedPositions.Contains(snappedPosition))
+            if (occupiedPositions.Contains(snappedPosition) || currentPlacements >= maxPlacements)
             SetGhostColor(Color.red);
             else
             SetGhostColor(new Color(1f, 1f, 1f, 0.5f));
@@ -88,11 +123,13 @@ public class GridPlacement : MonoBehaviour
     void PlaceObject()
     {
         Vector3 placementPosition=ghostObject.transform.position;
-        if (!occupiedPositions.Contains(placementPosition))
+        if (!occupiedPositions.Contains(placementPosition) && currentPlacements < maxPlacements)
         {
             Instantiate(thingToPlace, placementPosition, Quaternion.identity);
 
             occupiedPositions.Add(placementPosition);
+            currentPlacements++;
+            UpdatePlacementText();
         }
     }
 
@@ -115,8 +152,21 @@ public class GridPlacement : MonoBehaviour
 
                 occupiedPositions.Remove(snappedPos);
                 Destroy(hitObj);
+                currentPlacements--;
+                UpdatePlacementText();
             }
         }
+    }
+
+    void UpdatePlacementText()
+    {
+        if (placementText != null)
+            placementText.text = $"Objects Left: {maxPlacements - currentPlacements}";
+    }
+    void UpdateSelectedObjectText()
+    {
+        if (selectedObjectText != null && thingToPlace != null)
+            selectedObjectText.text = $"Selected: {thingToPlace.name}";
     }
 }
 
