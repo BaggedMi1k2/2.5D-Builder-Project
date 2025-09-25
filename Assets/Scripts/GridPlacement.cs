@@ -8,7 +8,7 @@ public class GridPlacement : MonoBehaviour
     public float gridSize = 1f;
     public GameObject thingToPlace;
     private GameObject ghostObject;
-    private HashSet<Vector3> occupiedPossition = new HashSet<Vector3>();
+    private HashSet<Vector3> occupiedPositions = new HashSet<Vector3>();
 
     private void Start()
     {
@@ -21,6 +21,8 @@ public class GridPlacement : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
             PlaceObject();
+        if (Input.GetMouseButtonDown(1))
+            DestroyObject();
     }
 
     // Update is called once per frame
@@ -66,7 +68,7 @@ public class GridPlacement : MonoBehaviour
 
             ghostObject.transform.position = snappedPosition;
 
-            if (occupiedPossition.Contains(snappedPosition))
+            if (occupiedPositions.Contains(snappedPosition))
             SetGhostColor(Color.red);
             else
             SetGhostColor(new Color(1f, 1f, 1f, 0.5f));
@@ -87,11 +89,34 @@ public class GridPlacement : MonoBehaviour
     void PlaceObject()
     {
         Vector3 placementPosition=ghostObject.transform.position;
-        if (!occupiedPossition.Contains(placementPosition))
+        if (!occupiedPositions.Contains(placementPosition))
         {
             Instantiate(thingToPlace, placementPosition, Quaternion.identity);
 
-            occupiedPossition.Add(placementPosition);
+            occupiedPositions.Add(placementPosition);
+        }
+    }
+
+    void DestroyObject()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            GameObject hitObj = hit.collider.gameObject;
+
+            if (hitObj.CompareTag("PlacedObject"))
+            {
+                Vector3 snappedPos = new Vector3
+                (
+                    Mathf.Round(hitObj.transform.position.x / gridSize) * gridSize,
+                    Mathf.Round(hitObj.transform.position.y / gridSize) * gridSize,
+                    Mathf.Round(hitObj.transform.position.z / gridSize) * gridSize
+                );
+
+                occupiedPositions.Remove(snappedPos);
+                Destroy(hitObj);
+            }
         }
     }
 }
