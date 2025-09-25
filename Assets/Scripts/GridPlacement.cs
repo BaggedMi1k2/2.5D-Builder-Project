@@ -58,7 +58,6 @@ public class GridPlacement : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
             Vector3 point = hit.point;
-
             Vector3 snappedPosition = new Vector3
             (
                 Mathf.Round(point.x / gridSize) * gridSize,
