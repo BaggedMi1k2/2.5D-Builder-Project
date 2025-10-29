@@ -780,8 +780,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3c9eb427e321154bb80fbd26072956f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  placementPlane: {fileID: 743927572}
   gridSize: 1
   maxPlacements: 100000
+  blockingLayers:
+    serializedVersion: 2
+    m_Bits: 200
   placeableObjects:
   - {fileID: 4751446753450865105, guid: 47d0eeff521887948aa65151a40f9dff, type: 3}
   - {fileID: 4701221589132318311, guid: 3f88491dbbc9ca442886aa524da1f92a, type: 3}
@@ -1970,7 +1974,7 @@ GameObject:
   - component: {fileID: 1930529663}
   - component: {fileID: 1930529662}
   - component: {fileID: 1930529661}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}

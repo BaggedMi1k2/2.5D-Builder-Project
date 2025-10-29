@@ -5,9 +5,14 @@ using TMPro;
 
 public class GridPlacement : MonoBehaviour
 {
+    //level plane
+    public GameObject placementPlane;
+
+
     // placment settings
     public float gridSize = 1f;
     public int maxPlacements = 5;
+    public LayerMask blockingLayers;
 
     //placable objects
     public List<GameObject> placeableObjects;
@@ -24,6 +29,7 @@ public class GridPlacement : MonoBehaviour
 
     private void Start()
     {
+
         if (placeableObjects.Count > 0)
         {
             thingToPlace = placeableObjects[currentIndex];
@@ -36,8 +42,10 @@ public class GridPlacement : MonoBehaviour
 
     private void Update()
     {
+
         HandleObjectSelection();
         UpdateGhostPosition();
+        UpdateGhostVisibility();
 
         if (Input.GetMouseButtonDown(0))
             PlaceObject();
@@ -102,11 +110,40 @@ public class GridPlacement : MonoBehaviour
 
             ghostObject.transform.position = snappedPosition;
 
-            if (occupiedPositions.Contains(snappedPosition) || currentPlacements >= maxPlacements)
-            SetGhostColor(Color.red);
+            Vector3 ghostSize = thingToPlace.GetComponent<Renderer>().bounds.size * 0.5f / 2f;
+            Collider[] hits = Physics.OverlapBox(snappedPosition, ghostSize, Quaternion.identity, blockingLayers);
+
+            if (occupiedPositions.Contains(snappedPosition) || currentPlacements >= maxPlacements || hits.Length > 0)
+                SetGhostColor(Color.red);
             else
             SetGhostColor(new Color(1f, 1f, 1f, 0.5f));
         }
+    }
+
+    void UpdateGhostVisibility()
+    {
+        if (ghostObject == null || placementPlane == null)
+            return;
+
+        // If plane GameObject is inactive OR its renderer is disabled, hide ghost
+        bool planeVisible = placementPlane.activeInHierarchy;
+
+        Renderer planeRenderer = placementPlane.GetComponent<Renderer>();
+        if (planeRenderer != null && !planeRenderer.enabled)
+            planeVisible = false;
+
+        ghostObject.SetActive(planeVisible);
+    }
+    public void HideGhost()
+    {
+        if (ghostObject != null)
+            ghostObject.SetActive(false);
+    }
+
+    public void ShowGhost()
+    {
+        if (ghostObject != null)
+            ghostObject.SetActive(true);
     }
 
     void SetGhostColor( Color color )
@@ -123,10 +160,14 @@ public class GridPlacement : MonoBehaviour
     void PlaceObject()
     {
         Vector3 placementPosition=ghostObject.transform.position;
-        if (!occupiedPositions.Contains(placementPosition) && currentPlacements < maxPlacements)
-        {
-            Instantiate(thingToPlace, placementPosition, Quaternion.identity);
+        Vector3 ghostSize = thingToPlace.GetComponent<Renderer>().bounds.size * 0.5f / 2f;
 
+        Collider[] hits = Physics.OverlapBox(placementPosition, ghostSize, Quaternion.identity, blockingLayers);
+
+        if (!occupiedPositions.Contains(placementPosition) && currentPlacements < maxPlacements && hits.Length == 0)
+        {
+            GameObject placed = Instantiate(thingToPlace, placementPosition, Quaternion.identity);
+            placed.tag = "PlacedObject";
             occupiedPositions.Add(placementPosition);
             currentPlacements++;
             UpdatePlacementText();

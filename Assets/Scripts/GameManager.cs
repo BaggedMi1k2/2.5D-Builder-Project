@@ -41,7 +41,18 @@ public class GameManager : MonoBehaviour
         {
             if (Input.GetKeyDown(toggle.key) && toggle.target != null)
             {
-                toggle.target.SetActive(!toggle.target.activeSelf);
+                bool newState = !toggle.target.activeSelf;
+                toggle.target.SetActive(newState);
+
+                //handle GridPlacement ghost visibility
+                GridPlacement gridPlacement = toggle.target.GetComponent<GridPlacement>();
+                if (gridPlacement != null)
+                {
+                    if (newState)
+                        gridPlacement.ShowGhost();
+                    else
+                        gridPlacement.HideGhost();
+                }
             }
         }
 
