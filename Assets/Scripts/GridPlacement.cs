@@ -24,7 +24,7 @@ public class GridPlacement : MonoBehaviour
     public TMP_Text selectedObjectText;
 
     private GameObject ghostObject;
-    private HashSet<Vector3> occupiedPositions = new HashSet<Vector3>();
+    public HashSet<Vector3> occupiedPositions = new HashSet<Vector3>();
     private int currentPlacements = 0;
 
     private void Start()
@@ -79,18 +79,33 @@ public class GridPlacement : MonoBehaviour
         foreach (Renderer renderer in renderers)
         {
             Material mat = renderer.material;
-            Color color = renderer.material.color;
-            color.a = 0.5f;  
-            mat.color = color;
 
-            mat.SetFloat("_Mode", 2);
-            mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
-            mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-            mat.SetInt("_ZWrite", 0);
-            mat.DisableKeyword("_ALPHATEST_ON");
-            mat.EnableKeyword("_ALPHABLEND_ON");
-            mat.DisableKeyword("_ALPHAPREMULTIPLY_ON");
-            mat.renderQueue = 3000;
+            if (mat.shader.name.Contains("TextMeshPro"))
+            {
+                // TMP uses _FaceColor instead of _Color
+                if (mat.HasProperty("_FaceColor"))
+                {
+                    Color color = mat.GetColor("_FaceColor");
+                    color.a = 0.5f;
+                    mat.SetColor("_FaceColor", color);
+                }
+            }
+            else
+            {
+                
+                Color color = renderer.material.color;
+                color.a = 0.5f;
+                mat.color = color;
+
+                mat.SetFloat("_Mode", 2);
+                mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+                mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+                mat.SetInt("_ZWrite", 0);
+                mat.DisableKeyword("_ALPHATEST_ON");
+                mat.EnableKeyword("_ALPHABLEND_ON");
+                mat.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+                mat.renderQueue = 3000;
+            }
         }
     }
 
@@ -168,6 +183,11 @@ public class GridPlacement : MonoBehaviour
         {
             GameObject placed = Instantiate(thingToPlace, placementPosition, Quaternion.identity);
             placed.tag = "PlacedObject";
+
+            Bomb bomb = placed.GetComponent<Bomb>(); //this allows the player to place a new block on the tile when the bomb explodes 
+            if (bomb != null)
+                bomb.gridPlacement = this;
+
             occupiedPositions.Add(placementPosition);
             currentPlacements++;
             UpdatePlacementText();

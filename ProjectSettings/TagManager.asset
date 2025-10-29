@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Goal
   - PlacedObject
+  - Destructable
   layers:
   - Default
   - TransparentFX
