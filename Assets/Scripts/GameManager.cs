@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     private float timer = 0f;
     private bool timerRunning = true;
 
+    public GameObject objectToToggle;
+
     private void Awake()
     {
         Time.timeScale = 1f;
@@ -126,5 +128,25 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(0); // loop back to main menu if no nother levels
         
+    }
+
+    public void pause()
+    {
+        if (objectToToggle != null)
+        {
+            bool isActive = objectToToggle.activeSelf;
+            objectToToggle.SetActive(!isActive);
+
+            // Pause or unpause the game
+            if (Time.timeScale == 1f)
+            {
+                Time.timeScale = 0f; // Pause
+            }
+            else
+            {
+                Time.timeScale = 1f; // Unpause
+            }
+        }
+
     }
 }
