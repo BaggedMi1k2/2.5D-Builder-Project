@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     public KeyScene[] sceneBindings;
     public KeyCode resetKey = KeyCode.P;
 
-    public TMP_Text timerText;
+    public TMP_Text[] timerText;
     private float timer = 0f;
     private bool timerRunning = true;
 
@@ -82,7 +82,16 @@ public class GameManager : MonoBehaviour
     {
         int minutes = Mathf.FloorToInt(timer / 60f);
         int seconds = Mathf.FloorToInt(timer % 60f);
-        timerText.text = $"{minutes:00}:{seconds:00}";
+        string timeString = $"{minutes:00}:{seconds:00}";
+
+        if (timerText != null)
+        {
+            foreach (var text in timerText)
+            {
+                if (text != null)
+                    text.text = timeString;
+            }
+        }
     }
 
     public void StopTimer()
