@@ -785,12 +785,13 @@ MonoBehaviour:
   maxPlacements: 100000
   blockingLayers:
     serializedVersion: 2
-    m_Bits: 200
+    m_Bits: 456
   placeableObjects:
   - {fileID: 4751446753450865105, guid: 47d0eeff521887948aa65151a40f9dff, type: 3}
   - {fileID: 4701221589132318311, guid: 3f88491dbbc9ca442886aa524da1f92a, type: 3}
   - {fileID: 2845139787744266984, guid: b0c921a07bf4cbd4fa5dd2571ec9f1a0, type: 3}
   - {fileID: 4569674512272472125, guid: ef4dd7614b052f644aaafa24d849e414, type: 3}
+  - {fileID: 1819014636955950315, guid: d45376eb2564bcd4aaa983c4a5faf8e3, type: 3}
   thingToPlace: {fileID: 4751446753450865105, guid: 47d0eeff521887948aa65151a40f9dff, type: 3}
   placementText: {fileID: 1300292176}
   selectedObjectText: {fileID: 418656154}
@@ -980,7 +981,7 @@ RectTransform:
   - {fileID: 2091335907}
   - {fileID: 1982105446}
   - {fileID: 1733898288}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 963194228}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1110,6 +1111,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1814244946}
+  - {fileID: 867928581}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &963194229
@@ -1159,7 +1161,7 @@ GameObject:
   - component: {fileID: 1072377288}
   - component: {fileID: 1072377287}
   - component: {fileID: 1072377286}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Goal
   m_TagString: Goal
   m_Icon: {fileID: 0}
@@ -2007,6 +2009,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  invertControls: 0
 --- !u!54 &1930529662
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2367,7 +2370,6 @@ SceneRoots:
   - {fileID: 533910676}
   - {fileID: 743927577}
   - {fileID: 1930529666}
-  - {fileID: 867928581}
   - {fileID: 1072377290}
   - {fileID: 7849030129115490343}
   - {fileID: 660556270}

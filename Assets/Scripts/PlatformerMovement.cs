@@ -29,6 +29,8 @@ public class PlatformerMovement : MonoBehaviour
     private bool jumpInput;
     private bool facingRight = true;
 
+    public bool invertControls = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -57,6 +59,11 @@ public class PlatformerMovement : MonoBehaviour
     void GetInput()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
+        if (invertControls)
+        {
+            horizontalInput *= -1;
+        }
+
         jumpInput = Input.GetButtonDown("Jump");
 
         if (jumpInput)
@@ -64,6 +71,12 @@ public class PlatformerMovement : MonoBehaviour
             lastJumpPressedTime = Time.time;
         }
     }
+
+    public void SetControlInversion(bool inverted)
+    {
+        invertControls = inverted;
+    }
+
     void RecoverRotation()
     {
         transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);

@@ -1,6 +1,7 @@
+using Cinemachine;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
 
 [System.Serializable]
 public class KeyToggle
@@ -25,7 +26,6 @@ public class GameManager : MonoBehaviour
     public TMP_Text timerText;
     private float timer = 0f;
     private bool timerRunning = true;
-
 
     private void Update()
     {
@@ -69,7 +69,9 @@ public class GameManager : MonoBehaviour
         {
             RestartGame();
         }
+
     }
+
 
     private void UpdateTimerDisplay()
     {

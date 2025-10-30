@@ -53,7 +53,8 @@ public class Bomb : MonoBehaviour
                 Mathf.Round(transform.position.z / gridPlacement.gridSize) * gridPlacement.gridSize
             );
 
-            gridPlacement.occupiedPositions.Remove(snappedPos);
+            //removes it from the gridplacment list so that other blocks may be placed in its location after it explodes 
+            gridPlacement.occupiedPositions.Remove(snappedPos); 
         }
 
         if (explosionPrefab != null)

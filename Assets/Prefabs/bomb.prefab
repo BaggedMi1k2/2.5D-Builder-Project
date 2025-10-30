@@ -57,7 +57,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -296,6 +296,7 @@ MonoBehaviour:
   explosionPrefab: {fileID: 9095211389064454461, guid: 2fe33f6169c428344b0b9536c158f894, type: 3}
   destructibleTag: Destructable
   countdownText: {fileID: 1826383578362218959}
+  gridPlacement: {fileID: 0}
 --- !u!1 &4993481141833390028
 GameObject:
   m_ObjectHideFlags: 0

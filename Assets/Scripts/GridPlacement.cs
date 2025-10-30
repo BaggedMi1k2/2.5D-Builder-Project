@@ -188,6 +188,10 @@ public class GridPlacement : MonoBehaviour
             if (bomb != null)
                 bomb.gridPlacement = this;
 
+            Teleporter teleporter = placed.GetComponent<Teleporter>(); //teleporter teleporter teleporter teleporter
+            if (teleporter != null)
+                teleporter.gridPlacement = this;
+
             occupiedPositions.Add(placementPosition);
             currentPlacements++;
             UpdatePlacementText();
