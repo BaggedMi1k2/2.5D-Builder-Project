@@ -27,6 +27,10 @@ public class GameManager : MonoBehaviour
     private float timer = 0f;
     private bool timerRunning = true;
 
+    private void Awake()
+    {
+        Time.timeScale = 1f;
+    }
     private void Update()
     {
         // Timer logic
@@ -35,6 +39,7 @@ public class GameManager : MonoBehaviour
             timer += Time.deltaTime;
             UpdateTimerDisplay();
         }
+
 
         // Toggle objects
         foreach (var toggle in toggles)
@@ -85,9 +90,32 @@ public class GameManager : MonoBehaviour
         timerRunning = false;
     }
 
-    public void RestartGame()
+    public static void RestartGame()
     {
         UnityEngine.SceneManagement.Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
+    }
+
+    public void LoadNextLevel()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        int nextSceneIndex = currentScene.buildIndex + 1;
+
+        // Check if next scene exists
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+        else
+        {
+            Debug.Log("No more levels in build settings. Restarting first level.");
+            SceneManager.LoadScene(0); // loop back to main menu if no nother levels
+        }
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(0); // loop back to main menu if no nother levels
+        
     }
 }

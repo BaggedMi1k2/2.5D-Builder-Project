@@ -5,7 +5,7 @@ using UnityEngine;
 public class GoalTrigger : MonoBehaviour
 {
     public GameManager gameManager;
-    public GameObject objectToToggle;
+    public GameObject[] objectsToToggle;
 
 
     private void OnTriggerEnter(Collider other)
@@ -14,10 +14,19 @@ public class GoalTrigger : MonoBehaviour
         {
             gameManager.StopTimer();
 
-            if (objectToToggle != null)
+            if (objectsToToggle != null && objectsToToggle.Length > 0)
             {
-                objectToToggle.SetActive(!objectToToggle.activeSelf);
+                foreach (GameObject obj in objectsToToggle)
+                {
+                    if (obj != null)
+                    {
+                        obj.SetActive(!obj.activeSelf);
+                    }
+                }
             }
         }
+        Time.timeScale = 0f;
     }
+
+    
 }

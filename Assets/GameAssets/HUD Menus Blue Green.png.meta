@@ -1,0 +1,341 @@
+fileFormatVersion: 2
+guid: deb0d5dce31bdba46ba1bcb4d17ed5ba
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: 0
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: HUD Menus Blue Green_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 401
+        width: 1105
+        height: 2126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b8b8b5b8dc384a4e86e34461897e2c2
+      internalID: -127186902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD Menus Blue Green_1
+      rect:
+        serializedVersion: 2
+        x: 1187
+        y: 1167
+        width: 2295
+        height: 1360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15abe366ce7afb24b97df23194713511
+      internalID: 678073895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD Menus Blue Green_2
+      rect:
+        serializedVersion: 2
+        x: 1187
+        y: 466
+        width: 598
+        height: 619
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d200ff4e5d125ac4f8b6c706cee3e8c8
+      internalID: 63609579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD Menus Blue Green_3
+      rect:
+        serializedVersion: 2
+        x: 1867
+        y: 466
+        width: 1615
+        height: 619
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 653a9da3b18d515448dde67f79ec078a
+      internalID: -1849387306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD Menus Blue Green_4
+      rect:
+        serializedVersion: 2
+        x: 1187
+        y: 0
+        width: 364
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1a0be563a9794140a37532adb8b5e2b
+      internalID: -534624444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD Menus Blue Green_5
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 0
+        width: 366
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b696e8ad5164ca4f90e05cdbb64f502
+      internalID: 173648457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD Menus Blue Green_6
+      rect:
+        serializedVersion: 2
+        x: 2079
+        y: 0
+        width: 364
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 269b44ea3f86f194e871c6002f09f116
+      internalID: -1645568947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD Menus Blue Green_7
+      rect:
+        serializedVersion: 2
+        x: 2525
+        y: 0
+        width: 364
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9eaca7a254990064292297b8d98f8436
+      internalID: 1962811079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline:
+    - - {x: -241.42773, y: -896.1837}
+      - {x: -528.76074, y: -896.1837}
+      - {x: -557.66406, y: -971.00745}
+      - {x: -557.66406, y: -1224.3877}
+      - {x: -511.7588, y: -1263.5}
+      - {x: -243.12793, y: -1263.5}
+      - {x: -187.02148, y: -1217.5854}
+      - {x: -187.02148, y: -928.49396}
+    - - {x: -81.609375, y: -896.1837}
+      - {x: -112.21289, y: -950.60095}
+      - {x: -112.21289, y: -1263.5}
+      - {x: 260.12988, y: -1263.5}
+      - {x: 260.12988, y: -928.49396}
+      - {x: 210.82422, y: -896.1837}
+    - - {x: 334.93848, y: -896.1837}
+      - {x: 334.93848, y: -1256.6979}
+      - {x: 348.54004, y: -1263.5}
+      - {x: 632.47266, y: -1263.5}
+      - {x: 705.58105, y: -1253.2968}
+      - {x: 705.58105, y: -896.1837}
+    - - {x: 1151.0322, y: -974.4085}
+      - {x: 1117.0283, y: -897.8843}
+      - {x: 1098.3262, y: -896.1837}
+      - {x: 814.39355, y: -896.1837}
+      - {x: 780.38965, y: -914.88965}
+      - {x: 780.38965, y: -1263.5}
+      - {x: 1105.127, y: -1263.5}
+      - {x: 1128.9297, y: -1227.7887}
+      - {x: 1151.0322, y: -1180.1737}
+    - - {x: -632.47266, y: 1263.5}
+      - {x: -1741, y: 1263.5}
+      - {x: -1741, y: -833.2638}
+      - {x: -1669.5918, y: -865.57404}
+      - {x: -700.48047, y: -865.57404}
+      - {x: -688.5791, y: -863.87354}
+      - {x: -632.47266, y: -829.86273}
+    - - {x: -557.66406, y: -175.15546}
+      - {x: -557.66406, y: -787.3493}
+      - {x: -518.5596, y: -800.9536}
+      - {x: 17.001953, y: -800.9536}
+      - {x: 47.60547, y: -799.25305}
+      - {x: 47.60547, y: -181.95761}
+      - {x: 35.7041, y: -175.15546}
+    - - {x: 122.41406, y: -175.15546}
+      - {x: 122.41406, y: -800.9536}
+      - {x: 1741, y: -800.9536}
+      - {x: 1741, y: -175.15546}
+    - - {x: -557.66406, y: 1263.5}
+      - {x: -557.66406, y: -100.331764}
+      - {x: 1741, y: -100.331764}
+      - {x: 1741, y: 1263.5}
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      HUD Menus Blue Green_0: -127186902
+      HUD Menus Blue Green_1: 678073895
+      HUD Menus Blue Green_2: 63609579
+      HUD Menus Blue Green_3: -1849387306
+      HUD Menus Blue Green_4: -534624444
+      HUD Menus Blue Green_5: 173648457
+      HUD Menus Blue Green_6: -1645568947
+      HUD Menus Blue Green_7: 1962811079
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

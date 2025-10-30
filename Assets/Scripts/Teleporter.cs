@@ -13,6 +13,12 @@ public class Teleporter : MonoBehaviour
     private static List<Teleporter> activeTeleporters = new List<Teleporter>();
     private static bool isTeleporting = false;
 
+
+    void Awake()
+    {
+        isTeleporting = false;
+    }
+
     void Start()
     {
         //check if placed
@@ -70,7 +76,10 @@ public class Teleporter : MonoBehaviour
         if (isTeleporting)
             yield break;
 
-        Teleporter target = (activeTeleporters[0] == this) ? activeTeleporters[1] : activeTeleporters[0];
+        if (activeTeleporters.Count < 2)
+            yield break;
+
+        Teleporter target = activeTeleporters.Find(t => t != this);
         if (target == null)
             yield break;
 
