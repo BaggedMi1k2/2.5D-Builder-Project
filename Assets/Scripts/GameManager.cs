@@ -103,6 +103,7 @@ public class GameManager : MonoBehaviour
 
     public static void RestartGame()
     {
+        SoundManager.Instance.PlaySound2D("Select");
         UnityEngine.SceneManagement.Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
     }
@@ -115,23 +116,31 @@ public class GameManager : MonoBehaviour
         // Check if next scene exists
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
+            MusicManager.Instance.PlayMusic("Game");
             SceneManager.LoadScene(nextSceneIndex);
+            
         }
         else
         {
             Debug.Log("No more levels in build settings. Restarting first level.");
+            MusicManager.Instance.PlayMusic("Menu");
             SceneManager.LoadScene(0); // loop back to main menu if no nother levels
         }
     }
 
     public void MainMenu()
     {
+        SoundManager.Instance.PlaySound2D("Select");
+        Time.timeScale = 1f;
+        MusicManager.Instance.PlayMusic("Menu");
         SceneManager.LoadScene(0); // loop back to main menu if no nother levels
-        
+
     }
 
     public void pause()
     {
+        SoundManager.Instance.PlaySound2D("Select");
+
         if (objectToToggle != null)
         {
             bool isActive = objectToToggle.activeSelf;

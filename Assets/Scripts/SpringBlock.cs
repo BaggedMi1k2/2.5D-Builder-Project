@@ -41,6 +41,7 @@ public class SpringBlock : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") &&
             Time.time > lastBounceTime + cooldownTime)
+            SoundManager.Instance.PlaySound2D("Spring");
         {
             Rigidbody playerRb = collision.gameObject.GetComponent<Rigidbody>();
             if (playerRb != null)

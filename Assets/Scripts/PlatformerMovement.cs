@@ -100,6 +100,7 @@ public class PlatformerMovement : MonoBehaviour
     {
         rb.velocity = new Vector3(rb.velocity.x, 0, 0); // Reset vertical velocity
         rb.AddForce(Vector3.up * force, ForceMode.Impulse);
+        SoundManager.Instance.PlaySound2D("Jump");
     }
 
     void HandleJumpInput()

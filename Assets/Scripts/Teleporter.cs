@@ -87,7 +87,7 @@ public class Teleporter : MonoBehaviour
 
         // Teleport player
         player.transform.position = target.transform.position + Vector3.up * 1f;
-
+        SoundManager.Instance.PlaySound2D("Teleport");
         //cooldown
         yield return new WaitForSeconds(teleportCooldown);
         isTeleporting = false;

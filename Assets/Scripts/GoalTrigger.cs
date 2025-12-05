@@ -12,6 +12,7 @@ public class GoalTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            SoundManager.Instance.PlaySound2D("Goal");
             gameManager.StopTimer();
 
             if (objectsToToggle != null && objectsToToggle.Length > 0)
@@ -26,6 +27,7 @@ public class GoalTrigger : MonoBehaviour
             }
         }
         Time.timeScale = 0f;
+
     }
 
     

@@ -81,7 +81,7 @@ public class Bomb : MonoBehaviour
                 Destroy(hit.gameObject);
             }
         }
-
+        SoundManager.Instance.PlaySound2D("Bomb");
         Destroy(gameObject);
     }
 

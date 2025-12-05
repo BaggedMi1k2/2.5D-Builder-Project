@@ -177,6 +177,8 @@ public class GridPlacement : MonoBehaviour
         Vector3 placementPosition=ghostObject.transform.position;
         Vector3 ghostSize = thingToPlace.GetComponent<Renderer>().bounds.size * 0.5f / 2f;
 
+        SoundManager.Instance.PlaySound2D("Place");
+
         Collider[] hits = Physics.OverlapBox(placementPosition, ghostSize, Quaternion.identity, blockingLayers);
 
         if (!occupiedPositions.Contains(placementPosition) && currentPlacements < maxPlacements && hits.Length == 0)
@@ -201,6 +203,8 @@ public class GridPlacement : MonoBehaviour
     void DestroyObject()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        SoundManager.Instance.PlaySound2D("Break");
 
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
